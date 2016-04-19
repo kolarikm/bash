@@ -1,0 +1,40 @@
+#!/bin/bash
+
+NUMBER=0
+SHOWCONTENTS=0
+SHOWHELP=0
+
+mkdir -p ~/.junk
+
+if [ $# == 0 ]
+then
+    echo "Missing arguments!"
+    exit 1
+fi
+
+for i  in "$@"
+do
+case $i in
+    -l)
+    SHOWCONTENTS=1
+    ;;
+    -n)
+    NUMBER=1
+    ;;
+    --help)
+    SHOWHELP=YES
+    ;;
+    *)
+    mv -u $i ~/.junk
+    ;;
+esac
+done
+
+if [ $SHOWCONTENTS == 1 ]
+then
+    ls -la ~/.junk
+fi
+if [ $NUMBER == 1 ]
+then
+    du -ah ~/.junk
+fi
