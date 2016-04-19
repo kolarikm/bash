@@ -18,14 +18,20 @@ case $i in
     -l)
     SHOWCONTENTS=1
     ;;
+
     -n)
     NUMBER=1
     ;;
+
     --help)
     SHOWHELP=YES
     ;;
+
     *)
-    mv -u $i ~/.junk
+    if [ $i -nt ~/.junk/$i ]
+    then
+        mv $i ~/.junk
+    fi
     ;;
 esac
 done
