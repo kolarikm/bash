@@ -1,20 +1,27 @@
 #!/bin/bash
 
+#Check for required command line arugments
 if [ $# -ne 1 ]
 then
     echo "Error: missing command line argument"
     exit 1
 fi
 
+#Read in standard output from last script as input
 while read -r line
 do
     set $line
     front = $1
+    #Look through noise words and output line if 
+    #doesn't contain a noise word
     while read noise
     do
         case "$1" in
             *$noise*)
-            echo "do nothing"
+                continue
+            ;;
+            *)
+                echo $line
             ;;
         esac
     done < $@
