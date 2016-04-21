@@ -41,3 +41,14 @@ done
 
 #Restore the old field sepator
 IFS=$old
+
+#Look through the sub directories for each
+#student and run the make scripts
+for f in "$dir"/*
+do
+    if [[ -d $f ]]
+    then
+        make -f makefile -C $f/
+        make test -f makefile -C $f/
+    fi
+done >> report.txt 
