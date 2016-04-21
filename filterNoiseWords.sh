@@ -11,7 +11,7 @@ fi
 while read -r line
 do
     set $line
-    front = $1
+    front=$1
     #Look through noise words and output line if 
     #doesn't contain a noise word
     while read noise
@@ -24,5 +24,5 @@ do
                 echo $line
             ;;
         esac
-    done < $@
-done
+    done
+done < $*

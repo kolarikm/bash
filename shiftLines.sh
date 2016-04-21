@@ -29,4 +29,4 @@ do
     done
     #Allow variable to be used in outside scripts
     export NUM_IN_LINES
-done < $*  
+done < $*
